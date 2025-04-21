@@ -1,6 +1,6 @@
-'''IMPORTANT NOTE
-When you use this tool you will have to provide YOUR OWN WORDLIST!!
-'''
+"IMPORTANT NOTE: When you use this tool you will have to provide YOUR OWN WORDLIST!!"
+
+
 import hashlib
 import pyfiglet
 from tqdm import tqdm
