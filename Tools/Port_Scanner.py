@@ -25,6 +25,7 @@ class PortScanner:
         """Resolve hostname to IP address."""
         try:
             ip = socket.gethostbyname(self.target)
+            print(f"[DEBUG] Resolved {self.target} to {ip}")
             return ip
         except socket.gaierror:
             print(f"{Fore.RED}[ERROR] Could not resolve hostname: {self.target}{Style.RESET_ALL}")
@@ -32,6 +33,7 @@ class PortScanner:
 
     def scan_port(self, ip, port):
         """Scan a single port."""
+        print(f"[DEBUG] Scanning port {port}")
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
                 sock.settimeout(self.timeout)
@@ -41,8 +43,8 @@ class PortScanner:
                     with self.lock:
                         self.open_ports.append((port, service))
                         print(f"{Fore.GREEN}[OPEN] Port {port} - {service}{Style.RESET_ALL}")
-        except socket.error:
-            pass  # Silently skip socket errors for individual ports
+        except socket.error as e:
+            print(f"[DEBUG] Socket error on port {port}: {e}")
 
     def get_service(self, port):
         """Attempt to identify service running on the port."""
@@ -63,6 +65,7 @@ class PortScanner:
 
     def scan(self):
         """Main scanning function."""
+        print("[DEBUG] scan() started")
         print(f"{Fore.CYAN}Starting port scan on {self.target}{Style.RESET_ALL}")
         print(f"Time started: {datetime.now()}")
         print(f"Scanning ports {self.start_port} to {self.end_port} ({len(self.ports)} ports)")
