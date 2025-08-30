@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # Net Doctor Plus – Beginner Network Diagnostic (Enhanced, Wikipedia + Public IP)
 import argparse
 import json
