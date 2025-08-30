@@ -31,7 +31,7 @@ def export_to_csv(results, filename):
         writer = csv.writer(file)
         writer.writerow(['IP', 'Port', 'Banner'])
         writer.writerows(results)
-    print(f"\n✅ Results saved to {filename}")
+    print(f"\nResults saved to {filename}")
 
 def parse_ports(port_string):
     """Parses port input like '21,22,80-85' into a list of ports."""
@@ -59,7 +59,7 @@ def main():
 
     output_file = input("Enter filename to export results as CSV (or press Enter to skip): ").strip()
 
-    print("\n🔍 Scanning in progress...")
+    print("\nScanning in progress...")
     print(f"Target: {target_ip}")
     print(f"Ports: {ports}")
     print(f"Threads: {threads}")
