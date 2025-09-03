@@ -1,4 +1,4 @@
-# Net Doctor Plus – Beginner Network Diagnostic (Enhanced, Wikipedia + Public IP)
+# Net Doctor - Beginner network diagnostics tool
 import argparse
 import json
 import os
@@ -10,7 +10,7 @@ import time
 from urllib.request import urlopen, Request
 from urllib.error import URLError, HTTPError
 
-# ===== Defaults (updated) =====
+#        DEFAULTS
 DEFAULT_IP_TARGETS = ["1.1.1.1", "8.8.8.8"]      # Cloudflare + Google
 DEFAULT_DOMAIN = "wikipedia.org"                 # known domain
 DEFAULT_URL = "https://www.wikipedia.org"        # known HTTPS URL
@@ -18,7 +18,7 @@ DEFAULT_PORTS = [53, 80, 443]                    # DNS / HTTP / HTTPS
 DEFAULT_SPEED_URL = "https://www.wikipedia.org"  # small, safe page
 DEFAULT_IPV6_TEST_HOST = "ipv6.google.com"       # common IPv6 hostname
 
-# ===== Helpers =====
+#         HELPERS
 def get_local_info():
     host = socket.gethostname()
     local_ip = "unknown"
@@ -372,7 +372,7 @@ h1,h2,h3{{margin-top:1.2rem}}
     with open(path, "w", encoding="utf-8") as f:
         f.write(html)
 
-# ===== Main =====
+#        MAIN
 def main():
     ap = argparse.ArgumentParser(description="Net Doctor Plus – Beginner Network Diagnostic (Enhanced)")
     ap.add_argument("--targets", nargs="*", default=DEFAULT_IP_TARGETS, help="IP addresses to ping")
